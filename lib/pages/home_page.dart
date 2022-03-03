@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:neon/neon.dart';
 import 'package:rive/rive.dart';
 
@@ -21,47 +20,45 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   bool get isPlaying => _controller?.isActive ?? false;
-  late BannerAd staticAd;
-  late BannerAd inlineAd;
-  bool inlineAdLoaded = false;
-  bool staticAdLoaded = false;
-  InterstitialAd? interstitialAd;
-  int interstitialAttempt = 0;
-  RewardedAd? rewardedAd;
-  int rewarderAdAttempt = 0;
+  // late BannerAd staticAd;
+  // late BannerAd inlineAd;
+  // bool inlineAdLoaded = false;
+  // bool staticAdLoaded = false;
+  // InterstitialAd? interstitialAd;
+  // int interstitialAttempt = 0;
+  // RewardedAd? rewardedAd;
+  // int rewarderAdAttempt = 0;
   Artboard? _riveArtboard;
   StateMachineController? _controller;
   SMIInput<bool>? _hoverInput;
   SMIInput<bool>? _pressInput;
-  static const AdRequest request = AdRequest(
-      // contentUrl: '',
-      // keywords: ['',''],
-      // nonPersonalizedAds: false,
-      );
+  // static const AdRequest request = AdRequest(
+  //
+  //     );
 
-  void loadStaticBannerAd() {
-    staticAd = BannerAd(
-      adUnitId: 'ca-app-pub-1384320474458887/5515575621',
-      size: AdSize.banner,
-      request: request,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          setState(() {
-            staticAdLoaded = true;
-          });
-        },
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-          print('ad failed to load ${error}');
-        },
-      ),
-    );
-    staticAd.load();
-  }
+  // void loadStaticBannerAd() {
+  //   staticAd = BannerAd(
+  //     adUnitId: 'ca-app-pub-1384320474458887/5515575621',
+  //     size: AdSize.banner,
+  //     request: request,
+  //     listener: BannerAdListener(
+  //       onAdLoaded: (ad) {
+  //         setState(() {
+  //           staticAdLoaded = true;
+  //         });
+  //       },
+  //       onAdFailedToLoad: (ad, error) {
+  //         ad.dispose();
+  //         print('ad failed to load ${error}');
+  //       },
+  //     ),
+  //   );
+  //   staticAd.load();
+  // }
 
   @override
   void initState() {
-    loadStaticBannerAd();
+    //loadStaticBannerAd();
     super.initState();
     rootBundle.load('assets/animations/rocket.riv').then(
       (data) async {
@@ -143,13 +140,13 @@ class HomePageState extends State<HomePage> {
                       ),
                     ),
             ),
-            SizedBox(
-              child: AdWidget(
-                ad: staticAd,
-              ),
-              width: staticAd.size.width.toDouble(),
-              height: staticAd.size.height.toDouble(),
-            )
+            // SizedBox(
+            //   child: AdWidget(
+            //     ad: staticAd,
+            //   ),
+            //   width: staticAd.size.width.toDouble(),
+            //   height: staticAd.size.height.toDouble(),
+            // )
           ],
         ),
       ),
